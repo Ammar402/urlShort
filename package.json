@@ -2,7 +2,6 @@
   "//1": "describes your app and its dependencies",
   "//2": "https://docs.npmjs.com/files/package.json",
   "//3": "updating this file will download and update your packages",
-
   "name": "my-glitch-app",
   "version": "0.0.1",
   "description": "What am I about?",
@@ -10,7 +9,12 @@
     "start": "node server.js"
   },
   "dependencies": {
-    "express": "^4.16.3"
+    "express": "^4.16.3",
+    "angular": "^1.6.9",
+    "mongoose": "^5.0.11",
+    "cors": "^2.8.4",
+    "body-parser": "^1.18.2",
+    "angular.js-server": "^0.1.0"
   },
   "engines": {
     "node": "9.x"
