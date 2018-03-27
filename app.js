@@ -1,4 +1,4 @@
-const angular = require('angular.js-server')
+const angular = require('angular')
 
 var app = angular.module('shortUrlApp',[]);
 
