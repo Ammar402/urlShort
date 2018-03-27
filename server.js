@@ -16,7 +16,7 @@ app.use(cors());
 // but feel free to use whatever libs or frameworks you'd like through `package.json`.
 
 // http://expressjs.com/en/starter/static-files.html
-app.use(express.static('public'))
+// app.use(express.static(__dirname + 'public'))
 
 // http://expressjs.com/en/starter/basic-routing.html
 app.get("/", (request, response) => {
