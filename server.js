@@ -24,7 +24,9 @@ app.get("/", (request, response) => {
 })
 
 // Simple in-memory store
-
+app.get('/new/urlToShorten(*)',(req,res,next)=>{
+  var {urlToShorten} = req.params;
+        });
 
 // listen for requests :)
 const listener = app.listen(process.env.PORT, () => {
