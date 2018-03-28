@@ -32,12 +32,12 @@ app.get("/", (request, response) => {
 app.get('/new/urlToShorten(*)',(req,res,next)=>{
   var urlToShorten = req.params.urlToShorten;
   
-  var expression = /^http(s)?:\/\/((\d+\.\d+\.\d+\.\d+)|(([\w-]+\.)+([a-z,A-Z][\w-]*)))(:[1-9][0-9]*)?(\/([\w-.\/:%+@&=]+[\w- .\/?:%+@&=]*)?)?(#(.*))?$/i;
+  var expression = /[-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?/gi;
   
   var regex = expression;
   
  if(regex.test(urlToShorten)===true){
- 
+ return res.json({urlToShorten})
  }
   return res.json({urlToShorten});
         });
