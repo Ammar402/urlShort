@@ -31,6 +31,14 @@ app.get("/", (request, response) => {
 // Simple in-memory store
 app.get('/new/urlToShorten(*)',(req,res,next)=>{
   var urlToShorten = req.params.urlToShorten;
+  
+  var expression = /^http(s)?:\/\/((\d+\.\d+\.\d+\.\d+)|(([\w-]+\.)+([a-z,A-Z][\w-]*)))(:[1-9][0-9]*)?(\/([\w-.\/:%+@&=]+[\w- .\/?:%+@&=]*)?)?(#(.*))?$/i;
+  
+  var regex = expression;
+  
+ if(regex.test(urlToShorten)===true){
+ 
+ }
   return res.json({urlToShorten});
         });
 
