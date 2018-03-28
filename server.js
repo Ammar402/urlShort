@@ -26,7 +26,8 @@ app.get("/", (request, response) => {
 
 // Simple in-memory store
 app.get('/new/urlToShorten(*)',(req,res,next)=>{
-  var {urlToShorten} = req.params;
+  var urlToShorten = req.params.urlToShorten;
+  return res.json({urlToShorten});
         });
 
 // listen for requests :)
