@@ -14,6 +14,9 @@ app.use(bodyParser.json());
 app.use(cors());
 
 
+//Connet to database
+mongoose.connect(process.env.MONGODB_URI || )
+
 // we've started you off with Express, 
 // but feel free to use whatever libs or frameworks you'd like through `package.json`.
 
