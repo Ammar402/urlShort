@@ -7,6 +7,7 @@ const bodyParser = require('body-parser')
 const cors = require('cors')
 const mongoose = require('mongoose')
 const app = express();
+const shortUrl = require("./model/shortUrl")
 
 app.use(express.static('public'));
 app.use(bodyParser.json());
