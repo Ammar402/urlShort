@@ -15,7 +15,7 @@ app.use(cors());
 
 
 //Connet to database
-mongoose.connect(process.env.MONGODB_URI || "mongodb://<dbuser>:<dbpassword>@ds121999.mlab.com:21999/apitest");
+mongoose.connect(process.env.MONGODB_URI || "mongodb://ammar:1111@ds121999.mlab.com:21999/apitest");
 
 // we've started you off with Express, 
 // but feel free to use whatever libs or frameworks you'd like through `package.json`.
@@ -36,7 +36,7 @@ app.get('/new/:urlToShorten(*)',(req,res,next)=>{
   
   var regex = expression;
   
- if(regex.test(urlToShorten)===true){
+ if(regex.test(urlToShorten)===true) {
    var short = Math.floor(Math.random() * 100000).toString(); 
    
    var data = new shortUrl({
@@ -59,7 +59,7 @@ app.get('/new/:urlToShorten(*)',(req,res,next)=>{
   });
   
   return res.json(data);
-        });
+});
 
 //Query database and forward to originalURL
 app.get ("/:urlToForward",function (req,res,next){
