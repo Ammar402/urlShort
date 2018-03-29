@@ -37,11 +37,11 @@ app.get('/new/:urlToShorten(*)',(req,res,next)=>{
   var regex = expression;
   
  if(regex.test(urlToShorten)===true){
-   var short = Math.floor(Math.random() * 100000).toString();
+   var short = Math.floor(Math.random() * 100000).toString(); 
    
    var data = new shortUrl({
    originalURL : urlToShorten,
-  shorterURL : short
+   shorterURL : short
    });
    
    data.save(function(err){
@@ -52,6 +52,7 @@ app.get('/new/:urlToShorten(*)',(req,res,next)=>{
    
  return res.json(data)
  }
+  
   var data = new shortUrl({
   originalURL: 'URL entered does not follow the correct format',
   shorterURL : 'Invalid URL'
