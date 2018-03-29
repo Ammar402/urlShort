@@ -41,7 +41,7 @@ app.get('/new/:urlToShorten(*)',(req,res,next)=>{
    
    var data = new shortUrl({
    originalURL : urlToShorten,
-   shorterURL : short
+   shorterUrl : short
    });
    
    data.save(function(err){
@@ -55,11 +55,26 @@ app.get('/new/:urlToShorten(*)',(req,res,next)=>{
   
   var data = new shortUrl({
   originalURL: 'URL entered does not follow the correct format',
-  shorterURL : 'Invalid URL'
+  shorterUrl : 'Invalid URL'
   });
   
   return res.json(data);
         });
+
+//Query database and forward to originalURL
+app.get ("/urlToForward",function (req,res,next){
+ var shorterUrl = req.params.urlToForward;
+         
+shortUrl.findOne({'shorterUrl': shorterUrl},(err,data)
+{
+  if (err) return res.send("Error reading database");
+  
+  var re = new RegExp ("^(http|https)://", "i");
+  var strToCheck = data.originalURL;
+  
+  if(re.test())
+});
+         });
 
 // listen for requests :)
 const listener = app.listen(process.env.PORT, () => {
