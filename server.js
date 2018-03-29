@@ -15,7 +15,10 @@ app.use(cors());
 
 
 //Connet to database
-mongoose.connect(process.env.MONGODB_URI || "mongodb://ammar:1111@ds121999.mlab.com:21999/apitest");
+mongoose.connect("mongodb://ammar:1111@ds121999.mlab.com:21999/apitest").then(
+  () => { console.log("connected") },
+  err => { console.log(err) }
+);
 
 // we've started you off with Express, 
 // but feel free to use whatever libs or frameworks you'd like through `package.json`.
@@ -40,8 +43,8 @@ app.get('/new/:urlToShorten(*)',(req,res,next)=>{
    var short = Math.floor(Math.random() * 100000).toString(); 
    
    var data = new shortUrl({
-   originalUrl : urlToShorten,
-   shorterUrl : short
+     originalUrl : urlToShorten,
+     shorterUrl : short
    });
    
    data.save(function(err){
