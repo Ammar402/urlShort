@@ -37,8 +37,26 @@ app.get('/new/:urlToShorten(*)',(req,res,next)=>{
   var regex = expression;
   
  if(regex.test(urlToShorten)===true){
+   var short = Math.floor(Math.random() * 100000).toString();
+   
+   var data = new shortUrl({
+   originalURL : urlToShorten,
+  shorterURL : short
+   });
+   
+   data.save(function(err){
+   if(err){
+     return res.send("Error save to database");
+   }
+   });
+   
  return res.json({urlToShorten})
  }
+  var data = new shortUrl({
+  originalURL : urlToShorten,
+  shorterURL : short
+  });
+  
   return res.json({urlToShorten});
         });
 
