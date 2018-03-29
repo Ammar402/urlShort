@@ -53,8 +53,8 @@ app.get('/new/:urlToShorten(*)',(req,res,next)=>{
  return res.json({urlToShorten})
  }
   var data = new shortUrl({
-  originalURL : urlToShorten,
-  shorterURL : short
+   originalURL: 'URL entered does not follow the correct format',
+  shorterURL : 'Invalid URL'
   });
   
   return res.json({urlToShorten});
