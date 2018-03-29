@@ -40,7 +40,7 @@ app.get('/new/:urlToShorten(*)',(req,res,next)=>{
    var short = Math.floor(Math.random() * 100000).toString(); 
    
    var data = new shortUrl({
-   originalURL : urlToShorten,
+   originalUrl : urlToShorten,
    shorterUrl : short
    });
    
@@ -54,7 +54,7 @@ app.get('/new/:urlToShorten(*)',(req,res,next)=>{
  }
   
   var data = new shortUrl({
-  originalURL: 'URL entered does not follow the correct format',
+  originalUrl: 'URL entered does not follow the correct format',
   shorterUrl : 'Invalid URL'
   });
   
@@ -62,17 +62,24 @@ app.get('/new/:urlToShorten(*)',(req,res,next)=>{
         });
 
 //Query database and forward to originalURL
-app.get ("/urlToForward",function (req,res,next){
+app.get ("/:urlToForward",function (req,res,next){
  var shorterUrl = req.params.urlToForward;
          
-shortUrl.findOne({'shorterUrl': shorterUrl},(err,data)
+shortUrl.findOne({'shorterUrl': shorterUrl},function(err,data)
 {
   if (err) return res.send("Error reading database");
   
   var re = new RegExp ("^(http|https)://", "i");
-  var strToCheck = data.originalURL;
+  var strToCheck = data.originalUrl;
   
-  if(re.test())
+  if(re.test(strToCheck)){
+    res.redirect(301,data.originalUrl);
+  }
+  else
+  {
+     res.redirect(301, 'http://' + data.originalUrl);
+  }
+
 });
          });
 
