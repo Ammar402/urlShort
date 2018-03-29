@@ -6,6 +6,6 @@ const urlSchema = new Schema({
   shorterUrl : String
 },{timestamps:true});
 
-const ModelClass = mongoose.model('shortUrl',urlSchema);
+const ModelClass = mongoose.model('shortUrl', urlSchema);
 
 module.exports = ModelClass;
